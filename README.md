@@ -23,3 +23,41 @@ Psique Machine intercepts LLM API traffic between autonomous agents (LangGraph, 
                │ 
                ▼
 [ OpenAI / Anthropic / Gemini / Local Sub-Kernels ]                                                                                
+```
+
+---
+
+## Zero-Rewrite Integration
+
+Point any OpenAI-compatible SDK to your Psique Machine gateway instance:
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="http://localhost:8080/v1",  # Psique Machine Gateway
+    api_key="your-upstream-provider-key"
+)
+
+response = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": "Analyze portfolio risk under LGPD rules."}]
+)
+```
+
+---
+
+## Core Capabilities
+
+* **Cognitive Overload Telemetry ($I_{sc}$):** Detects guardrail saturation, circular reasoning loops, and context pollution before latency spikes or hallucinations reach end users.
+* **Semantic Context Pruning:** Compresses redundant system prompts and noisy conversation history without altering agent intent.
+* **Compliance-by-Design Ledger:** Generates tamper-evident JSON records (`entry_hash` + `prev_hash`) ready for **LGPD**, **ISO/IEC 42001**, and **EU AI Act** audits.
+
+---
+
+## Enterprise Onboarding & 30-Day Paid POC
+
+Starcrow Tech offers a **30-day In-VPC Paid Proof of Concept (POC)** with a contractual performance guarantee (≥30% token reduction at equal or better quality).
+
+* **Live Agent on Fetch.ai / ASI:One:** [`@cognitive-proxy-1`](https://asi1.ai/ai/cognitive-proxy-1)
+* **Technical Contact:** `poc@starcrow.tech`
